@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min-4.4.1.css">
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.min-4.4.1.js"></script>
+</head>
+
+<body>
+    <div class="text-center jumbotron">
+        <button class="btn btn-outline-secondary btn-lg">Get Name</button>
+    </div>
+    <div id="beforeSend"></div>
+    <div id="response"></div>
+    <div id="complete"></div>
+
+    <script>
+
+        $.ajaxSetup({
+            url: "php/postName.php"
+        });
+
+        $('button').on('click', function () {
+            $.ajax({
+                method: "POST",
+                // if url not found request will loop to it's page and call this page.
+                // if url not found will get url from ajaxSetup().
+                url: "php/postName.php",
+                contentType: "application/x-www-form-urlencoded",
+                data: { name: 'aly ahmed', age: '26' },
+                beforeSend: function (xhr) {
+                    // this method before send data , so that it will all time if error or not.
+                    // return XMLHttpRequest object
+                    document.getElementById('beforeSend').innerHTML = `beforeSend method: ${xhr}`;
+                },
+                success: function (data, status, xhr) {
+                    // work only if all work correctly
+                    document.getElementById('response').innerHTML = 'success =>test using post method' + data;
+                },
+                error: function (xhr, status, error) {
+                    // will disclose error if there problem specific in url
+                    document.getElementById('response').innerHTML = 'error message: ' + error;
+                },
+                complete: function (xhr, status) {
+                    // this method is executed after [success| error] ,so it will work all time 
+                    // as finally in java
+                    document.getElementById('complete').innerHTML = 'complete: ' + status;
+                }
+
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+[
+    {
+        "name": "ali",
+        "age": 30,
+        "car": null
+    },
+    {
+        "name": "aly",
+        "age": 32,
+        "car": null
+    },
+    {
+        "name": "hossam",
+        "age": 34,
+        "car": null
+    },
+    {
+        "name": "ibrahim",
+        "age": 32,
+        "car": null
+    },
+    {
+        "name": "hoda",
+        "age": 11,
+        "car": null
+    }
+]

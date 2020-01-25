@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min-4.4.1.css">
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.min-4.4.1.js"></script>
+</head>
+
+<body>
+    <div class="text-center jumbotron">
+        <button class="btn btn-outline-secondary btn-lg">Get Name</button>
+    </div>
+    <div id="beforeSend"></div>
+    <div id="success"></div>
+    <div id="complete"></div>
+
+    <script>
+
+        // when html page completely loaded
+        $(document).ready(function () {
+            // will start first
+            $(document).ajaxStart(function () {
+                alert('before start');
+            });
+
+            // shown only if request success
+            $(document).ajaxSuccess(function () {
+                alert("success");
+            });
+            // shown only if request error
+            $(document).ajaxError(function (event, xhr, options, error) {
+                alert(error);
+            });
+
+            // it load file to defined class's tag
+            $('button').click(function () {
+                $('#success').load('info.txt');
+            });
+
+            // it work all time error|success
+            $(document).ajaxComplete(function () {
+                alert('complete');
+            });
+        });
+
+    </script>
+</body>
+
+</html>
